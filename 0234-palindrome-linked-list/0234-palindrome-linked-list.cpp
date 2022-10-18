@@ -15,11 +15,6 @@ public:
         vector<int> vec;
         bool flag = true;
         
-        if(head == NULL)
-        {
-            return false;
-        }
-        
         while(head != NULL)
         {
             vec.push_back(head->val);
