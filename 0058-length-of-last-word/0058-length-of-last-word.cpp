@@ -14,7 +14,6 @@ public:
             if(s[i] == ' ' && last_len > 0)
             {
                 break;
-                //return last_len;
             }
             
         }
