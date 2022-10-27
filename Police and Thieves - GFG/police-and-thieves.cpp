@@ -28,8 +28,10 @@ class Solution{
         }
 
         int i = 0, j = 0, ans = 0;
+        int len1 = arr1.size();
+        int len2 = arr2.size();
         
-        while(i<arr1.size() && j<arr2.size())
+        while(i<len1 && j<len2)
 
         {
             if(abs(arr1[i]-arr2[j])<=k)
