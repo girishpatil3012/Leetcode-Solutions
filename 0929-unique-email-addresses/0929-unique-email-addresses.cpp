@@ -17,7 +17,7 @@ public:
                 {
                     continue;
                 }
-                if(present[j] == '+')
+                else if(present[j] == '+')
                 {
                     break;  
                 }
