@@ -6,10 +6,10 @@ public:
         int longest_len = 0;
         int len = words.size();
         
-        for(auto w : words)
+        for(int i = 0; i < len; i++)
         {
-            int x = w[0] - 'a';
-            int y = w[1] - 'a';
+            int x = words[i][0] - 'a';
+            int y = words[i][1] - 'a';
             
             if(freq[y][x])
             {
