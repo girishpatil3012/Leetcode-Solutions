@@ -3,19 +3,20 @@ public:
     vector<int> findDuplicates(vector<int>& nums) 
     {
         int len = nums.size();
-        unordered_map<int,int> mp;
+        
         vector<int> vec;
         
         for(int i = 0; i < len; i++)
         {
-            mp[nums[i]]++;
-        }
-        
-        for(auto x : mp)
-        {
-            if(x.second == 2)
+            int no = abs(nums[i]);
+            
+            if(nums[no-1] < 0)
             {
-                vec.push_back(x.first);
+                vec.push_back(no);
+            }
+            else
+            {
+                nums[no-1] *= -1;
             }
         }
         return vec;
