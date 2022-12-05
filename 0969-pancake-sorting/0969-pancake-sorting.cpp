@@ -20,7 +20,8 @@ public:
         
         int n = A.size();
         vector<int>res;
-        for (int i = n-1; i >= 0; i--) {
+        for (int i = n-1; i >= 0; i--) 
+        {
             int x = findMaxIdx(A, i);
             res.push_back(x+1);
             res.push_back(i+1);
