@@ -3,7 +3,8 @@ public:
     bool solve(vector<int> adj[], int sv, int dest, int n, vector<bool> &vis)
     {
     
-        if(sv==dest) return true;
+        if(sv==dest) 
+            return true;
 
         vis[sv]=true;
 
@@ -12,7 +13,8 @@ public:
             if(!vis[it])
             {
                 bool s=solve(adj,it,dest,n,vis);
-                if(s==true) return true;
+                if(s==true) 
+                    return true;
             }
         }
         return false;
