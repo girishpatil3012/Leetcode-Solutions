@@ -4,25 +4,26 @@ public:
     {
         sort(nums.begin(),nums.end());
         int len = nums.size();
-        int left = 0;
-        int right = 0;
+        int start = 0;
+        int end = 0;
         long sum = 0;
         int maxii = 0;
         
-        while(right < len)
+        while(end < len)
         {
-            if (sum > k){
-                sum -= nums[right] - nums[left];
-                left++;
+            if (sum > k)
+            {
+                sum -= nums[end] - nums[start];
+                start++;
                 continue;
             }
             if (sum <= k)
             {
-                maxii = max(right-left+1,maxii);
-                right++;
-                if (right<nums.size())
+                maxii = max(end - start + 1, maxii);
+                end++;
+                if (end < len)
                 {
-                    sum += (long)(right-left)*(nums[right]-nums[right-1]);
+                    sum += (long)(end - start) * (nums[end] - nums[end-1]);
                 }
             }
         }
