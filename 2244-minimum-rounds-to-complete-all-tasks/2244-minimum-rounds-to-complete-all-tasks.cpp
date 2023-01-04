@@ -16,7 +16,7 @@ public:
             if(it.second == 1)
                 return -1;
             
-            min_round += (it.second + 2) / 3;
+            min_round += (it.second + 2) / 3;   // max task we can do is 3
         }
         return min_round;
     }
