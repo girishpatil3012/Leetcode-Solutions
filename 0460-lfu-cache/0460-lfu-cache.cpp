@@ -1,4 +1,3 @@
-//Just for better readability
 using Key_t = int;
 using Count_t = int;
 
