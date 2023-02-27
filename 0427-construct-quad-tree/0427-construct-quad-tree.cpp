@@ -49,7 +49,7 @@ public:
                 {
                     allsame = false;
                     break;
-                                              }
+                }
         Node*result;
         if(allsame)
         {
