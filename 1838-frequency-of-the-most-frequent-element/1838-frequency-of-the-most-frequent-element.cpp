@@ -4,10 +4,8 @@ public:
     {
         sort(nums.begin(),nums.end());
         int len = nums.size();
-        int start = 0;
-        int end = 0;
+        int start = 0, end = 0, maxii = INT_MIN;
         long sum = 0;
-        int maxii = 0;
         
         while(end < len)
         {
