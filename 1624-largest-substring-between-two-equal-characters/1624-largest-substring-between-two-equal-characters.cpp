@@ -1,20 +1,25 @@
 class Solution {
 public:
-    int maxLengthBetweenEqualCharacters(string s) 
-    {
-        int maxi =- 1;
-        
-        for(int i=0;i<s.size();i++)
+    int maxLengthBetweenEqualCharacters(string s) {
+        vector<int> f(26, -1);
+        vector<int> l(26, -1);
+        int maxi = -1;
+
+        for (int i = 0; i < s.size(); ++i)
         {
-            char c=s[i];
-            for(int j=0;j<s.size();j++)
+            int m = s[i] - 'a';
+
+            if (f[m] == -1) 
             {
-                if(c==s[j])
-                {
-                    maxi=max(maxi,j-i-1);
-                }
+                f[m] = i;
+            } 
+            else 
+            {
+                l[m] = i;
+                maxi = max(maxi, l[m] - f[m] - 1);
             }
         }
+
         return maxi;
     }
 };
