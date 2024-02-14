@@ -13,7 +13,6 @@ public:
                 vec[index1] = nums[i];
                 index1 += 2;
             }
-            
             if(nums[i] < 0)
             {
                 vec[index2] = nums[i];
