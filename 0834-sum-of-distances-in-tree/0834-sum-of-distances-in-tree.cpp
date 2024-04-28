@@ -1,47 +1,40 @@
-class Solution 
-{
-    vector<map<int, pair<int, int>>> graph;
-
-    int dfs(int i, int j)
-    {
-        if(j!=-1 && graph[j][i].first != -1)
-            return graph[j][i].first;
-
-        int sum = 0, count = 0;
-        for(auto p : graph[i])
-        {
-            if(p.first != j)
-            {
-                sum += dfs(p.first, i);
-                int x = graph[i][p.first].second + 1;
-
-                sum += x;
-                count += x;
+class Solution {
+public:
+    int sum=0;
+    int helper(vector<int> adj[],int node,vector<int> &vis,vector<int> &numEdges,int dis){
+        int ret=0;
+        sum+=dis;
+        vis[node]=1;
+        for(auto a: adj[node]){
+            if(!vis[a]){
+                ret+=1+helper(adj,a,vis,numEdges,dis+1);
+                numEdges[node]=ret;
             }
         }
-
-        if(j != -1)
-        {
-            graph[j][i].first = sum;
-            graph[j][i].second = count;
-        }
-        return sum;
+        return ret;
     }
-public:
-    vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) 
-    {
-        vector<int> ans(n);
-        graph = vector<map<int, pair<int, int>>>(n);
-
-        for(auto ed : edges)
-        {
-            graph[ed[0]][ed[1]] = {-1,0};
-            graph[ed[1]][ed[0]] = {-1,0};
+    void dfs(vector<int> adj[],int node,int n,vector<int>& numEdges,vector<int>& vis,vector<int>& res){
+        vis[node]=1;
+        for(auto a: adj[node]){
+            if(!vis[a]){
+                res[a]=res[node]-numEdges[a]+n-2-numEdges[a];
+                dfs(adj,a,n,numEdges,vis,res);
+            }
         }
-
-        for(int i = 0; i<n; i++)
-            ans[i] = dfs(i, -1);
-
-        return ans;
+    }
+    vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) {
+        vector<int> adj[n];
+        for(int i=0;i<edges.size();i++){
+            adj[edges[i][0]].push_back(edges[i][1]);
+            adj[edges[i][1]].push_back(edges[i][0]);
+        }
+        vector<int> numEdges(n,0);
+        vector<int> vis(n,0);
+        vector<int> res(n,0);
+        helper(adj,0,vis,numEdges,0);
+        res[0]=sum;
+        vector<int> vis1(n,0);
+        dfs(adj,0,n,numEdges,vis1,res);
+        return res;
     }
 };
