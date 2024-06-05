@@ -9,7 +9,6 @@ public:
         for(int i = 0; i < len1; i++)
         {
             int len2 = words[i].length();
-            
             for(int j = 0; j < len2; j++)
             {
                 mp[words[i][j]][i]++;
