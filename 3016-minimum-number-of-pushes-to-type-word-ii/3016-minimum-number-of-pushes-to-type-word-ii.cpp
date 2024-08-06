@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int minimumPushes(string word) {
+    int minimumPushes(string word) 
+    {
         unordered_map<char, int> mp;
         for(auto it : word) mp[it]++;
         priority_queue<int> pq;
